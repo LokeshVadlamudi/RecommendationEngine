@@ -114,6 +114,10 @@ us_canada_user_rating = us_canada_user_rating.drop('Age',axis=1)
 #us_canada_user_rating.shape
 # (56396, 6)
 
+
+
+
+
 #us_canada_user_rating.columns
 #Index(['userID', 'ISBN', 'bookRating', 'bookTitle', 'totalRatingCount','Location'],
 #      dtype='object')
@@ -125,6 +129,11 @@ us_canada_user_rating = us_canada_user_rating.drop_duplicates(['userID','bookTit
 
 #us_canada_user_rating.shape
 # (54731, 6)
+
+#convert df to csv file
+export_csv = us_canada_user_rating.to_csv(r'dataset.csv',index=None,header=True)
+
+
 
 #create a pivot table 
 us_canada_user_rating_pivot = us_canada_user_rating.pivot(index='bookTitle',columns = 'userID', values = 'bookRating').fillna(0)
